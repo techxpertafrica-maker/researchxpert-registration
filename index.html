@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Registration - ResearchXpert Africa</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .bg-grid-pattern {
+      background-size: 30px 30px;
+      background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 bg-grid-pattern min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation -->
+  <header class="bg-[#0d3263] border-b border-sky-900/50 sticky top-0 z-50 shadow-md">
+    <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo Section - Replicating your Uploaded Logo exactly -->
+      <div class="flex items-center space-x-4">
+        <!-- Exact replica of your African Shield Network Logo -->
+        
+         
+        
+        <!-- Text side of the Logo matching your exact brand identity -->
+        <div class="flex flex-col">
+          <span class="font-extrabold text-xl md:text-2xl tracking-tight text-white leading-none">RESEARCHXPERT</span>
+          <span class="text-xs md:text-sm font-black tracking-widest text-[#2394d6] leading-none mt-1">AFRICA</span>
+          <span class="text-[8px] md:text-[9px] font-medium tracking-wider text-slate-300 uppercase mt-1">Empowering Insights for a Sustainable Africa</span>
+        </div>
+      </div>
+      
+      <!-- Interactive Tab Toggles -->
+      <div class="flex space-x-1 bg-slate-850/50 p-1 rounded-full border border-sky-800">
+        <button id="tab-register" onclick="switchTab('register')" class="px-4 py-1.5 rounded-full text-xs font-semibold transition bg-[#2394d6] text-white shadow-sm">
+          Register
+        </button>
+        <button id="tab-admin" onclick="switchTab('admin')" class="px-4 py-1.5 rounded-full text-xs font-semibold transition text-slate-300 hover:text-white">
+          Organizer Admin (<span id="count-badge">0</span>)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Body Portal -->
+  <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow">
+    
+    <!-- REGISTRATION INTERFACE -->
+    <div id="registration-view" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Left Column: Event Details & Countdown (Flyer Copy) -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-8">
+        <div class="space-y-6">
+          <div class="inline-flex items-center space-x-2 bg-[#2394d6]/10 text-[#0d3263] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+            <span>🔴 Live Masterclass</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+            From NotebookLM <br class="hidden md:inline">to Mendeley:
+            <span class="block text-[#2394d6] mt-2 text-2xl md:text-3xl font-bold">Harnessing AI Tools Ethically for Literature Reviews</span>
+          </h1>
+          <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+            Empowering researchers with cutting-edge academic frameworks. Join Olutimileyin Victoria for an intensive, practical session to accelerate your study pipelines safely and ethically.
+          </p>
+
+          <!-- Speaker Card -->
+          <div class="flex items-center space-x-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+            <div class="w-14 h-14 rounded-full bg-sky-100 border-2 border-[#2394d6] flex items-center justify-center overflow-hidden">
+              <svg class="w-10 h-10 text-slate-600 mt-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-900">Olutimileyin Victoria</h4>
+              <p class="text-xs text-slate-500 font-medium">Lead Research Consultant, ResearchXpert</p>
+            </div>
+          </div>
+
+          <!-- Event Meta Stats -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-white p-3 rounded-xl border border-slate-100 text-center shadow-sm">
+              <span class="block text-[10px] font-bold text-slate-400 uppercase">Venue</span>
+              <span class="font-bold text-slate-800 text-sm flex items-center justify-center space-x-1 mt-1">
+                <svg class="w-4 h-4 text-red-600" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.507 9.388.507 9.388.507s7.517 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                <span>YouTube</span>
+              </span>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-100 text-center shadow-sm">
+              <span class="block text-[10px] font-bold text-slate-400 uppercase">Date</span>
+              <span class="font-bold text-slate-800 text-xs md:text-sm mt-1 block">4th June 2026</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-100 text-center shadow-sm">
+              <span class="block text-[10px] font-bold text-slate-400 uppercase">Time</span>
+              <span class="font-bold text-slate-800 text-xs md:text-sm mt-1 block">10am WAT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Countdown Timer -->
+        <div class="bg-gradient-to-br from-[#0d3263] to-[#124b8f] text-white p-6 rounded-2xl shadow-md space-y-3">
+          <p class="text-xs font-semibold text-sky-200 tracking-wider uppercase">Masterclass Begins In:</p>
+          <div class="grid grid-cols-4 gap-2 text-center">
+            <div class="bg-white/10 p-2 rounded-lg">
+              <span id="days" class="block text-xl md:text-2xl font-black">00</span>
+              <span class="text-[9px] uppercase font-semibold text-sky-200">Days</span>
+            </div>
+            <div class="bg-white/10 p-2 rounded-lg">
+              <span id="hours" class="block text-xl md:text-2xl font-black">00</span>
+              <span class="text-[9px] uppercase font-semibold text-sky-200">Hrs</span>
+            </div>
+            <div class="bg-white/10 p-2 rounded-lg">
+              <span id="minutes" class="block text-xl md:text-2xl font-black">00</span>
+              <span class="text-[9px] uppercase font-semibold text-sky-200">Min</span>
+            </div>
+            <div class="bg-white/10 p-2 rounded-lg">
+              <span id="seconds" class="block text-xl md:text-2xl font-black">00</span>
+              <span class="text-[9px] uppercase font-semibold text-sky-200">Sec</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Registration Form styled elegantly -->
+      <div class="lg:col-span-7">
+        <div class="bg-white border border-slate-200 shadow-xl rounded-3xl overflow-hidden transition-all duration-300">
+          
+          <!-- Google Forms Style Accent Top Header Banner -->
+          <div class="h-4 bg-gradient-to-r from-[#0d3263] via-[#2394d6] to-[#0d3263]"></div>
+          
+          <div class="p-6 md:p-8 space-y-6">
+            <!-- Form Header info -->
+            <div>
+              <h2 class="text-2xl font-extrabold text-slate-900">Event Registration</h2>
+              <p class="text-xs text-slate-500 mt-1">Please provide accurate details below to secure your streaming access and personalized certificate.</p>
+            </div>
+
+            <!-- REGISTRATION FORM -->
+            <form id="event-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+              
+              <!-- Full Name (For Certificate) -->
+              <div class="space-y-2">
+                <label for="fullName" class="block text-sm font-semibold text-slate-700">
+                  Full Name <span class="text-red-500">*</span>
+                  <span class="block text-[11px] text-slate-400 font-normal mt-0.5">(Exactly as it should appear on your masterclass certificate)</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  required 
+                  placeholder="e.g. Dr. Abigail Johnson" 
+                  oninput="updateCertificatePreview()"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#2394d6] focus:border-transparent outline-none transition text-sm"
+                >
+              </div>
+
+              <!-- Email Address -->
+              <div class="space-y-2">
+                <label for="email" class="block text-sm font-semibold text-slate-700">
+                  Email Address <span class="text-red-500">*</span>
+                  <span class="block text-[11px] text-slate-400 font-normal mt-0.5">(We will send your YouTube link and instructions to this address)</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  required 
+                  placeholder="abigail.johnson@university.edu"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#2394d6] focus:border-transparent outline-none transition text-sm"
+                >
+              </div>
+
+              <!-- Occupation -->
+              <div class="space-y-2">
+                <label for="occupation" class="block text-sm font-semibold text-slate-700">
+                  Occupation / Academic Affiliation <span class="text-red-500">*</span>
+                </label>
+                <select 
+                  id="occupation" 
+                  required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#2394d6] focus:border-transparent outline-none transition text-sm bg-white"
+                >
+                  <option value="" disabled selected>Select your current role</option>
+                  <option value="Researcher">Researcher / Scholar</option>
+                  <option value="Postgraduate Student">Postgraduate Student (MSc / PhD)</option>
+                  <option value="Undergraduate Student">Undergraduate Student</option>
+                  <option value="Lecturer / Professor">Lecturer / Professor</option>
+                  <option value="Industry Professional">Industry Professional</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Newsletter & Consent -->
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-3">
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">Preferences</label>
+                
+                <label class="flex items-start space-x-3 cursor-pointer select-none">
+                  <input type="checkbox" id="newsletter" checked class="mt-1 h-4 w-4 rounded border-slate-300 text-[#2394d6] focus:ring-[#2394d6]">
+                  <span class="text-xs text-slate-600 leading-normal">
+                    I want to receive the <strong>ResearchXpert Africa newsletter</strong> with monthly resources, templates, and notices about future events.
+                  </span>
+                </label>
+              </div>
+
+              <!-- Live Interactive Certificate Preview Panel! -->
+              <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 space-y-2">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Dynamic Certificate Preview</span>
+                <div class="relative bg-white aspect-[1.6/1] border-2 border-[#0d3263]/20 rounded-lg p-4 flex flex-col justify-between items-center text-center shadow-inner overflow-hidden">
+                  <!-- Custom Brand Shield Watermark in Background -->
+                  <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+                    <svg class="w-40 h-40 text-[#0d3263]" viewBox="0 0 100 100" fill="currentColor">
+                      <path d="M50 5C50 5 85 15 85 50C85 80 50 95 50 95C50 95 15 80 15 50C15 15 50 5 50 5Z"/>
+                    </svg>
+                  </div>
+                  
+                  <div class="w-full border-b border-slate-100 pb-1 text-[8px] font-semibold text-[#0d3263] tracking-wider uppercase">
+                    ResearchXpert Africa Certificate
+                  </div>
+                  
+                  <div class="space-y-1">
+                    <span class="text-[7px] text-slate-400 block italic">This certifies that</span>
+                    <span id="cert-name" class="block text-xs md:text-sm font-extrabold text-[#0d3263] border-b border-dashed border-slate-300 px-4 py-0.5 min-w-[150px] italic">
+                      [Your Name Will Appear Here]
+                    </span>
+                    <span class="text-[6px] text-slate-400 block max-w-[220px] mx-auto leading-relaxed">
+                      has successfully registered and attended the masterclass: <strong class="text-slate-600 font-bold">"From NotebookLM to Mendeley: Ethical AI Literature Reviews"</strong> on June 4th, 2026.
+                    </span>
+                  </div>
+
+                  <div class="w-full flex justify-between items-end text-[5px] text-slate-400">
+                    <div class="text-left">
+                      <div class="h-4 border-b border-slate-300 w-16 mb-0.5"></div>
+                      <span>Olutimileyin Victoria</span>
+                    </div>
+                    <div class="text-right">
+                      <span class="block">Ref Code: RXA-2026-PND</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button 
+                type="submit"
+                class="w-full bg-gradient-to-r from-[#0d3263] to-[#2394d6] hover:from-[#2394d6] hover:to-[#0d3263] text-white font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all transform duration-150 flex items-center justify-center space-x-2 text-sm"
+              >
+                <span>Complete Free Registration</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+
+            </form>
+
+            <!-- Submission Success Modal Context (Hidden by default) -->
+            <div id="success-message" class="hidden text-center space-y-6 py-6 animate-fade-in">
+              <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-md">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <div class="space-y-2">
+                <h3 class="text-2xl font-black text-slate-900">Registration Confirmed!</h3>
+                <p class="text-slate-500 text-xs px-4">
+                  Awesome! We have saved your spot. A calendar invitation and stream details have been prepared for: <strong id="success-email" class="text-[#2394d6]">your-email@domain.com</strong>.
+                </p>
+              </div>
+
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 text-left space-y-2">
+                <span class="text-xs font-bold text-slate-700 block">Next Steps:</span>
+                <ul class="text-[11px] text-slate-500 space-y-1.5 list-disc pl-4">
+                  <li>Keep an eye on your inbox for the link to the YouTube stream.</li>
+                  <li>We'll track your attendance during the session on June 4th to validate your certificate.</li>
+                  <li>Need support? Call us at <strong class="text-slate-800">08160679166</strong> or email <strong class="text-slate-800">techxpertafrica@gmail.com</strong>.</li>
+                  <li>Have any research colleagues? Share this registration page to help them scale up!</li>
+                </ul>
+              </div>
+
+              <button 
+                onclick="resetForm()" 
+                class="text-xs text-slate-400 hover:text-slate-600 underline font-medium"
+              >
+                Submit another response
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ORGANIZER ADMIN DASHBOARD INTERFACE (HIDDEN BY DEFAULT) -->
+    <div id="admin-view" class="hidden space-y-6">
+      <div class="bg-white border border-slate-200 shadow-lg rounded-2xl p-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-100">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+              <span>📊 Attendee Directory & Submissions</span>
+              <span id="admin-count-pill" class="bg-sky-100 text-[#0d3263] text-xs font-bold px-2.5 py-0.5 rounded-full">0 Registered</span>
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">Simulated Live Google Forms Database Sheet. Clear or download your data instantly.</p>
+          </div>
+          <div class="flex space-x-2 w-full md:w-auto">
+            <button onclick="downloadCSV()" class="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-lg flex items-center justify-center space-x-1.5 shadow">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+              <span>Export CSV</span>
+            </button>
+            <button onclick="clearDatabase()" class="flex-1 md:flex-none bg-slate-100 hover:bg-red-50 hover:text-red-600 text-slate-600 text-xs font-bold px-3 py-2 rounded-lg transition-colors border border-slate-200">
+              Clear All
+            </button>
+          </div>
+        </div>
+
+        <!-- Table Display of entries -->
+        <div class="overflow-x-auto mt-6">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50 text-slate-500 font-bold">
+                <th class="p-3">#</th>
+                <th class="p-3">Name (For Certificate)</th>
+                <th class="p-3">Email</th>
+                <th class="p-3">Occupation</th>
+                <th class="p-3">Newsletter Opt-in</th>
+                <th class="p-3">Registration Time</th>
+              </tr>
+            </thead>
+            <tbody id="submissions-table-body" class="divide-y divide-slate-100 text-slate-700">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+          <div id="no-data-msg" class="text-center py-12 text-slate-400 italic">
+            No registration records found yet. Submit the registration form to see updates instantly here!
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer block matching flyer and new contact credentials -->
+  <footer class="bg-slate-900 text-white py-12 border-t-4 border-[#2394d6]">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+      
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <!-- Exact replica of your African Shield Network Logo (Footer Version) -->
+          <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 8C50 8 82 17 82 48C82 74 50 92 50 92C50 92 18 74 18 48C18 17 50 8 50 8Z" fill="#2394d6"/>
+            <path d="M50 10C50 10 79 18.5 79 48C79 71.5 50 88 50 88C50 88 21 71.5 21 48C21 18.5 50 10 50 10Z" stroke="white" stroke-width="4.5" stroke-linejoin="round"/>
+            <!-- Africa shape in footer logo -->
+            
+            <!-- Interconnected lines inside footer icon -->
+            <path d="M43 31 L50 38 L42.5 55.5 M50 38 L58 38.5 L53.5 61.5 L42.5 55.5" stroke="white" stroke-width="0.75" opacity="0.6"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="font-extrabold text-base tracking-wider text-white">RESEARCHXPERT</span>
+            <span class="text-xs font-bold tracking-widest text-[#2394d6] -mt-1">AFRICA</span>
+          </div>
+        </div>
+        <p class="text-slate-400 text-xs">
+          Empowering insights for a sustainable Africa. Professional academic consulting, research design, and tool masterclasses.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="font-bold text-[#2394d6] text-xs uppercase tracking-widest">Masterclass Agenda</h4>
+        <ul class="space-y-2 text-xs text-slate-300">
+          <li>• Ethical Use of Generative AI in Literature Searches</li>
+          <li>• Synthesis Matrix & Note-taking with NotebookLM</li>
+          <li>• Integrating Smart Bibliographies using Mendeley Desktop/Web</li>
+          <li>• Avoiding Plagiarism and preserving citation fidelity</li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="font-bold text-[#2394d6] text-xs uppercase tracking-widest">Event Credentials & Contact</h4>
+        <p class="text-xs text-slate-300 leading-relaxed space-y-1">
+          <span class="block">Organizer: <strong class="text-white font-medium">ResearchXpert Africa</strong></span>
+          <span class="block">Email: <a href="mailto:techxpertafrica@gmail.com" class="text-white hover:underline font-semibold">techxpertafrica@gmail.com</a></span>
+          <span class="block">Phone: <a href="tel:08160679166" class="text-white hover:underline font-semibold">08160679166</a></span>
+          <span class="block text-slate-400 text-[11px] mt-1">Stream Access: Free to registered public attendees. Certificate issued upon completing verification check-in.</span>
+        </p>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+      &copy; 2026 ResearchXpert Africa. All rights reserved. Registered under Sustainable Africa Framework Initiatives.
+    </div>
+  </footer>
+
+  <!-- Script logic for dynamic actions, timers, and storage manager -->
+  <script>
+    // Config: Target event date: June 4, 2026, at 10:00 AM WAT (UTC +1)
+    const TARGET_DATE = new Date("2026-06-04T10:00:00+01:00").getTime();
+
+    // In-memory/LocalStorage fallback array of submissions
+    let dbSubmissions = [];
+
+    // On Load Initializations
+    window.onload = function() {
+      // Load saved mock records from LocalStorage
+      const savedData = localStorage.getItem('rx_event_registrations');
+      if (savedData) {
+        dbSubmissions = JSON.parse(savedData);
+      } else {
+        // Add a placeholder mockup attendee to make dashboard interesting initially
+        dbSubmissions = [
+          {
+            name: "Dr. Abigail Johnson",
+            email: "abigail.johnson@university.edu",
+            occupation: "Lecturer / Professor",
+            newsletter: true,
+            timestamp: new Date("2026-05-15T14:32:00").toLocaleString()
+          }
+        ];
+        saveToLocalStorage();
+      }
+
+      // Update badge counts
+      updateDashboardCounts();
+
+      // Start live timer countdown
+      startCountdown();
+    };
+
+    // Live countdown calculation
+    function startCountdown() {
+      function updateClock() {
+        const now = new Date().getTime();
+        const diff = TARGET_DATE - now;
+
+        if (diff <= 0) {
+          document.getElementById('days').innerText = "00";
+          document.getElementById('hours').innerText = "00";
+          document.getElementById('minutes').innerText = "00";
+          document.getElementById('seconds').innerText = "00";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    }
+
+    // Dynamic certificate text update
+    function updateCertificatePreview() {
+      const nameInput = document.getElementById('fullName').value.trim();
+      const previewText = document.getElementById('cert-name');
+      if (nameInput.length > 0) {
+        previewText.innerText = nameInput;
+      } else {
+        previewText.innerText = "[Your Name Will Appear Here]";
+      }
+    }
+
+    // Submit handler simulation
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const occupation = document.getElementById('occupation').value;
+      const newsletter = document.getElementById('newsletter').checked;
+      const timestamp = new Date().toLocaleString();
+
+      const newRegistration = {
+        name,
+        email,
+        occupation,
+        newsletter,
+        timestamp
+      };
+
+      // Add to mock local db
+      dbSubmissions.push(newRegistration);
+      saveToLocalStorage();
+      updateDashboardCounts();
+
+      // Hide Form UI & Show Success Panel
+      document.getElementById('event-form').classList.add('hidden');
+      document.getElementById('success-message').classList.remove('hidden');
+      document.getElementById('success-email').innerText = email;
+    }
+
+    // Reset Form UI to let someone submit another response
+    function resetForm() {
+      document.getElementById('event-form').reset();
+      document.getElementById('fullName').value = "";
+      updateCertificatePreview();
+      
+      document.getElementById('success-message').classList.add('hidden');
+      document.getElementById('event-form').classList.remove('hidden');
+    }
+
+    // Switching layout Tabs (Register Form vs. Organizer Dashboard)
+    function switchTab(target) {
+      const tabReg = document.getElementById('tab-register');
+      const tabAdmin = document.getElementById('tab-admin');
+      const viewReg = document.getElementById('registration-view');
+      const viewAdmin = document.getElementById('admin-view');
+
+      if (target === 'register') {
+        tabReg.className = "px-4 py-1.5 rounded-full text-xs font-semibold transition bg-[#2394d6] text-white shadow-sm";
+        tabAdmin.className = "px-4 py-1.5 rounded-full text-xs font-semibold transition text-slate-300 hover:text-white";
+        viewReg.classList.remove('hidden');
+        viewAdmin.classList.add('hidden');
+      } else if (target === 'admin') {
+        tabAdmin.className = "px-4 py-1.5 rounded-full text-xs font-semibold transition bg-[#2394d6] text-white shadow-sm";
+        tabReg.className = "px-4 py-1.5 rounded-full text-xs font-semibold transition text-slate-300 hover:text-white";
+        viewReg.classList.add('hidden');
+        viewAdmin.classList.remove('hidden');
+        renderAdminTable();
+      }
+    }
+
+    // Render Database Submissions to Dashboard Table
+    function renderAdminTable() {
+      const tbody = document.getElementById('submissions-table-body');
+      const noData = document.getElementById('no-data-msg');
+      tbody.innerHTML = "";
+
+      if (dbSubmissions.length === 0) {
+        noData.classList.remove('hidden');
+        return;
+      }
+      noData.classList.add('hidden');
+
+      dbSubmissions.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50/50 transition-colors";
+        row.innerHTML = `
+          <td class="p-3 font-semibold text-slate-400">${index + 1}</td>
+          <td class="p-3 font-bold text-slate-900">${escapeHTML(item.name)}</td>
+          <td class="p-3 font-medium text-slate-600">${escapeHTML(item.email)}</td>
+          <td class="p-3"><span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full text-[10px] font-semibold">${escapeHTML(item.occupation)}</span></td>
+          <td class="p-3 font-semibold text-slate-700">${item.newsletter ? '✅ Subscribed' : '❌ No'}</td>
+          <td class="p-3 text-slate-400 text-[10px]">${item.timestamp}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Export simulated Database to true downloadable CSV
+    function downloadCSV() {
+      if (dbSubmissions.length === 0) {
+        alert("There is no attendee data to export yet!");
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += "Serial,Name,Email,Occupation,Newsletter Subscription,Timestamp\n";
+
+      dbSubmissions.forEach((item, idx) => {
+        const row = [
+          idx + 1,
+          `"${item.name.replace(/"/g, '""')}"`,
+          `"${item.email.replace(/"/g, '""')}"`,
+          `"${item.occupation.replace(/"/g, '""')}"`,
+          item.newsletter ? "Yes" : "No",
+          `"${item.timestamp}"`
+        ];
+        csvContent += row.join(",") + "\n";
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "ResearchXpert_Africa_Registrations.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Clear DB Helper
+    function clearDatabase() {
+      if (confirm("Are you sure you want to delete all simulation registrations? This cannot be undone.")) {
+        dbSubmissions = [];
+        saveToLocalStorage();
+        updateDashboardCounts();
+        renderAdminTable();
+      }
+    }
+
+    // Save current submissions state to local storage
+    function saveToLocalStorage() {
+      localStorage.setItem('rx_event_registrations', JSON.stringify(dbSubmissions));
+    }
+
+    // Sync Counters across UI
+    function updateDashboardCounts() {
+      const count = dbSubmissions.length;
+      document.getElementById('count-badge').innerText = count;
+      document.getElementById('admin-count-pill').innerText = `${count} Registered`;
+    }
+
+    // Helper sanitization to block HTML injection in simulator
+    function escapeHTML(str) {
+      return str.replace(/[&<>'"]/g, 
+        tag => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[tag] || tag)
+      );
+    }
+  </script>
+</body>
+</html>
